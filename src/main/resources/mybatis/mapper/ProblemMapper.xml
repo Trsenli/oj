@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oj.ojbackend.mapper.ProblemMapper">
+
+    <select id="queryProblemByIf" parameterType="Map" resultType="problem">
+        select * from t_problem
+        <where>
+            <if test="pb_id != null">
+                pb_id = #{pb_id}
+            </if>
+            <if test="pb_file_id != null">
+                and pb_file_id = #{pb_file_id}
+            </if>
+            <if test="pb_title != null">
+                and pb_title like #{pb_title}"%"
+            </if>
+            <if test="pb_description != null">
+                and pb_description = #{pb_description}
+            </if>
+            <if test="pb_tags != null">
+                and pb_tags = #{pb_tags}
+            </if>
+            <if test="pb_input_description != pb_input_description">
+                and pb_input_description = #{pb_input_description}
+            </if>
+            <if test="pb_output_description != null">
+                and pb_output_description = #{pb_output_description}
+            </if>
+            <if test="pb_test_case_score != null">
+                and pb_test_case_score = #{pb_test_case_score}
+            </if>
+            <if test="pb_hint != null">
+                and pb_hint = #{pb_hint}
+            </if>
+            <if test="pb_time_limit != null">
+                and pb_time_limit = #{pb_time_limit}
+            </if>
+            <if test="pb_memory_limit != null">
+                and pb_memory_limit = #{pb_memory_limit}
+            </if>
+            <if test="pb_samples != null">
+                and pb_samples = #{pb_samples}
+            </if>
+            <if test="pb_template != null">
+                and pb_template = #{pb_template}
+            </if>
+            <if test="pb_spj != null">
+                and pb_spj = #{pb_spj}
+            </if>
+            <if test="pb_rule_type != null">
+                and pb_rule_type = #{pb_rule_type}
+            </if>
+            <if test="pb_source != null">
+                and pb_source = #{pb_source}
+            </if>
+            <if test="pb_answers != null">
+                and pb_answers = #{pb_answers}
+            </if>
+        </where>
+    </select>
+
+</mapper>
