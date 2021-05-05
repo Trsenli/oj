@@ -59,6 +59,9 @@
                 and pb_answers = #{pb_answers}
             </if>
         </where>
+        <if test="startIndex!=null&amp;&amp;pageSize!=null">
+            limit #{startIndex},#{pageSize};
+        </if>
     </select>
 
 </mapper>

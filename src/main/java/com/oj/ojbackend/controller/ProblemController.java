@@ -42,4 +42,15 @@ public class ProblemController {
         return problemMapper.queryProblemByIf(map);
     }
 
+    // 分页查询题目
+    @GetMapping("/page/{startIndex}/{pageSize}")
+    public List<Problem> getProblemByPages(@PathVariable String startIndex,@PathVariable String pageSize){
+        Map<String,Object> map = new HashMap<String,Object>();
+        int startIndexInt = Integer.parseInt(startIndex);
+        int pageSizeInt = Integer.parseInt(pageSize);
+        map.put("startIndex",startIndexInt);
+        map.put("pageSize",pageSizeInt);
+        return problemMapper.queryProblemByIf(map);
+    }
+
 }

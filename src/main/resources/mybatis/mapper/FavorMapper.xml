@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oj.ojbackend.mapper.FavorMapper">
+    <select id="queryFavorById" resultType="FavorDto">
+        select pb.pb_file_id as fid,pb.pb_title as title,pb.pb_tags as tag
+        from t_problem as pb,t_Favor as fa
+        where fa.uid = #{uid} and pb.pb_file_id=fa.fid;
+    </select>
+
+    <insert id="addFavor" parameterType="Favor">
+        insert into t_Favor (uid, fid)
+        values (#{uid},#{fid});
+    </insert>
+
+    <delete id="deleteFavor" parameterType="Favor">
+        delete from t_Favor where uid = #{uid} and fid=#{fid};
+    </delete>
+</mapper>

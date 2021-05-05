@@ -60,4 +60,12 @@ class OjBackEndApplicationTests {
 
     }
 
+    @Test
+    void limit(){
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("startIndex",0);
+        map.put("pageSize",10);
+        List<Problem> problems = problemMapper.queryProblemByIf(map);
+    }
+
 }

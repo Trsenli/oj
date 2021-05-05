@@ -2,10 +2,12 @@ package com.oj.ojbackend.controller;
 
 import com.oj.ojbackend.mapper.UserMapper;
 import com.oj.ojbackend.pojo.User;
+import com.oj.ojbackend.pojo.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/user")
 @RestController
@@ -23,6 +25,13 @@ public class UserController {
     @GetMapping("/{id}")
     public User getUserById(@PathVariable String id){
         return userMapper.queryUserById(id);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody UserDto userDto){
+        User user = userMapper.queryUserById(userDto.getId());
+        if (user.getUser_pwd().equals(userDto.getPwd()))return "success";
+        else return "fail";
     }
 
     @PostMapping()
