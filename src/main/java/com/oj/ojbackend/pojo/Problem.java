@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Problem {
     private String pb_id;
+
     private String pb_file_id;
     private String pb_title;
     private String pb_description;
